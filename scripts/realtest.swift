@@ -273,3 +273,4 @@ outer: for key in selected {
 
 TISSelectInputSource(originalSource)
 print("\n\(failedCount == 0 && !aborted ? "✔" : "✘") \(total - failedCount)/\(total) đúng\(aborted ? " (đã dừng giữa chừng)" : "")")
+exit(failedCount == 0 && !aborted ? 0 : 1)
