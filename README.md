@@ -48,7 +48,7 @@ scripts/package.sh      # đóng gói bản phát hành universal: dist/VietKey-
 scripts/uninstall.sh    # gỡ cài đặt
 ```
 
-`swift scripts/realtest.swift` gõ phím thật vào TextEdit, Safari, Chrome và VS Code để kiểm tra (cần cấp quyền Accessibility cho Terminal).
+Cách kiểm thử và kết quả gần nhất: [TESTING.md](TESTING.md), [test-results/SUMMARY.md](test-results/SUMMARY.md). Chạy toàn bộ: `scripts/test-all.sh`.
 
 ## Cấu trúc
 

@@ -1,0 +1,55 @@
+# Trình cài đặt trong DMG
+# Ngày:    2026-11-20 15:12 +07
+# Commit:  74c511b
+# macOS:   27.2.1 (arm64)
+# Swift:   Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+
+Nguồn: dist/VietKey-0.1.0.dmg
+
+▸ Cài lại (đã cài sẵn)
+    [chữ] VietKey đã được cài trên máy
+    [chữ] Bạn có thể cài lại bản 0.1.0 (cập nhật) hoặc gỡ VietKey khỏi máy.
+    [nút] Cài lại bản 0.1.0
+    [nút] Huỷ
+    [nút] Gỡ cài đặt
+    → bấm "Cài lại bản 0.1.0"
+    [chữ] Đã cài VietKey
+    [chữ] Chọn VietKey ở biểu tượng bàn phím trên thanh menu, hoặc đổi bộ gõ bằng Ctrl+Space / phím 🌐. /  / Nếu chưa thấy VietKey trong danh sách: đăng xuất rồi đăng nhập lại. /  / Có thể đẩy (eject) file DMG và xoá nó đi.
+    [nút] OK
+  ✔ trình cài đặt tự thoát
+  ✔ app có trong Input Methods
+  ✔ bộ gõ đang chạy
+  ✔ bộ gõ được bật
+
+▸ Gỡ cài đặt
+    [chữ] VietKey đã được cài trên máy
+    [chữ] Bạn có thể cài lại bản 0.1.0 (cập nhật) hoặc gỡ VietKey khỏi máy.
+    [nút] Cài lại bản 0.1.0
+    [nút] Huỷ
+    [nút] Gỡ cài đặt
+    → bấm "Gỡ cài đặt"
+    [chữ] Đã gỡ VietKey
+    [chữ] Nếu VietKey vẫn còn trong danh sách bộ gõ, hãy đăng xuất rồi đăng nhập lại.
+    [nút] OK
+  ✔ trình cài đặt tự thoát
+  ✔ app đã bị xoá khỏi Input Methods
+  ✔ bộ gõ đã tắt tiến trình
+  ✔ bộ gõ không còn được bật
+
+▸ Cài mới
+    [chữ] Cài bộ gõ VietKey 0.1.0?
+    [chữ] VietKey sẽ được cài vào thư mục Input Methods của bạn và bật trong danh sách bộ gõ. Không cần mật khẩu quản trị.
+    [nút] Huỷ
+    [nút] Cài đặt
+    → bấm "Cài đặt"
+    [chữ] Đã cài VietKey
+    [chữ] Chọn VietKey ở biểu tượng bàn phím trên thanh menu, hoặc đổi bộ gõ bằng Ctrl+Space / phím 🌐. /  / Nếu chưa thấy VietKey trong danh sách: đăng xuất rồi đăng nhập lại. /  / Có thể đẩy (eject) file DMG và xoá nó đi.
+    [nút] OK
+  ✔ trình cài đặt tự thoát
+  ✔ app có trong Input Methods
+  ✔ không còn cờ quarantine
+  ✔ bộ gõ đang chạy
+  ✔ bộ gõ được bật
+  ✔ binary universal (arm64 + x86_64)
+
+✔ 14/14 đúng

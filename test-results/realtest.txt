@@ -1,0 +1,74 @@
+# Gõ phím thật trong app
+# Ngày:    2026-11-20 15:12 +07
+# Commit:  74c511b
+# macOS:   27.2.1 (arm64)
+# Swift:   Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+
+
+▸ TextEdit
+  (bộ gõ: com.vietkey.inputmethod.VietKey)
+  ✔ tooi ddi hocj                      → "tôi đi học "
+  ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
+  ✔ nguowif dduowcj truwowngf          → "người được trường "
+  ✔ quys khachs giuwax                 → "quý khách giữa "
+  ✔ toans<                             → "toá"
+  ✔ tieengs<g                          → "tiếng"
+  ✔ vieejt <<t                         → "việt"
+  ✔ hoaf<<<xin chaof                   → "xin chào"
+  ✔ hoa←f                              → "hofa"
+  ✔ case tests, windows.               → "case tests, windows."
+
+▸ Safari (textarea)
+  (bộ gõ: com.vietkey.inputmethod.VietKey)
+  ✔ tooi ddi hocj                      → "tôi đi học "
+  ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
+  ✔ nguowif dduowcj truwowngf          → "người được trường "
+  ✔ quys khachs giuwax                 → "quý khách giữa "
+  ✔ toans<                             → "toá"
+  ✔ tieengs<g                          → "tiếng"
+  ✔ vieejt <<t                         → "việt"
+  ✔ hoaf<<<xin chaof                   → "xin chào"
+  ✔ hoa←f                              → "hofa"
+  ✔ case tests, windows.               → "case tests, windows."
+
+▸ Chrome (textarea)
+  (bộ gõ: com.vietkey.inputmethod.VietKey)
+  ✔ tooi ddi hocj                      → "tôi đi học "
+  ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
+  ✔ nguowif dduowcj truwowngf          → "người được trường "
+  ✔ quys khachs giuwax                 → "quý khách giữa "
+  ✔ toans<                             → "toá"
+  ✔ tieengs<g                          → "tiếng"
+  ✔ vieejt <<t                         → "việt"
+  ✔ hoaf<<<xin chaof                   → "xin chào"
+  ✔ hoa←f                              → "hofa"
+  ✔ case tests, windows.               → "case tests, windows."
+
+▸ Chrome (thanh địa chỉ)
+  (bộ gõ: com.vietkey.inputmethod.VietKey)
+  ✔ tooi ddi hocj                      → "tôi đi học "
+  ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
+  ✔ nguowif dduowcj truwowngf          → "người được trường "
+  ✔ quys khachs giuwax                 → "quý khách giữa "
+  ✔ toans<                             → "toá"
+  ✔ tieengs<g                          → "tiếng"
+  ✔ vieejt <<t                         → "việt"
+  ✔ hoaf<<<xin chaof                   → "xin chào"
+  ✔ case tests, windows.               → "case tests, windows."
+
+▸ VS Code
+  (khởi động lần 1: nhận "aa", chọn lại VietKey)
+  (khởi động lần 2: nhận "aa", chọn lại VietKey)
+  (bộ gõ: com.vietkey.inputmethod.VietKey)
+  ✔ tooi ddi hocj                      → "tôi đi học "
+  ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
+  ✔ nguowif dduowcj truwowngf          → "người được trường "
+  ✔ quys khachs giuwax                 → "quý khách giữa "
+  ✔ toans<                             → "toá"
+  ✔ tieengs<g                          → "tiếng"
+  ✔ vieejt <<t                         → "việt"
+  ✔ hoaf<<<xin chaof                   → "xin chào"
+  ✔ hoa←f                              → "hofa"
+  ✔ case tests, windows.               → "case tests, windows."
+
+✔ 49/49 đúng
