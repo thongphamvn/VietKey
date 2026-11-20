@@ -17,12 +17,12 @@ Ngoài ra:
 
 ## Cài đặt
 
-1. Tải `VietKey-<phiên bản>.zip` ở mục [Releases](../../releases) rồi giải nén.
-2. Bấm đúp **Cài đặt VietKey.command**.
+1. Tải **`VietKey-<phiên bản>.dmg`** ở mục [Releases](../../releases) rồi mở ra.
+2. Bấm đúp **VietKey** và chọn **Cài đặt**. App tự cài vào `~/Library/Input Methods` và bật bộ gõ, không cần mật khẩu quản trị và không cần kéo vào Applications.
    App chưa được Apple công chứng, nên lần đầu macOS có thể chặn. Khi đó vào **System Settings → Privacy & Security → Open Anyway** rồi bấm đúp lại.
 3. Chọn **VietKey** ở biểu tượng bàn phím trên thanh menu (hoặc Ctrl+Space / phím 🌐). Nếu chưa thấy, đăng xuất rồi đăng nhập lại.
 
-Gỡ cài đặt: bấm đúp **Gỡ VietKey.command**.
+Cập nhật hoặc gỡ cài đặt: mở DMG, bấm đúp **VietKey**, chọn **Cài lại** hoặc **Gỡ cài đặt**.
 
 Yêu cầu macOS 13 trở lên, Apple Silicon hoặc Intel.
 
@@ -44,7 +44,8 @@ Chỉ cần Command Line Tools (`xcode-select --install`), không cần Xcode.
 ```bash
 scripts/install.sh      # build và cài cho máy này
 swift run VietTests     # chạy unit test của engine
-scripts/package.sh      # đóng gói bản phát hành universal vào dist/
+scripts/package.sh      # đóng gói bản phát hành universal: dist/VietKey-<phiên bản>.dmg
+scripts/uninstall.sh    # gỡ cài đặt
 ```
 
 `swift scripts/realtest.swift` gõ phím thật vào TextEdit, Safari, Chrome và VS Code để kiểm tra (cần cấp quyền Accessibility cho Terminal).
@@ -56,9 +57,9 @@ Sources/VietEngine/   engine gõ, không phụ thuộc giao diện
   Vietnamese.swift      bảng chữ, phân tích âm tiết, vị trí dấu
   TelexComposer.swift   biến đổi Telex trên chữ đã ghép
   InputSession.swift    đưa chữ vào app: gõ thẳng hoặc gạch chân, kiểm tra trước khi sửa
-Sources/VietKey/      app InputMethodKit
+Sources/VietKey/      app InputMethodKit; mở từ ngoài Input Methods thì chạy như trình cài đặt
 Sources/VietTests/    test engine và app giả lập (app báo trễ, không báo con trỏ...)
-packaging/            script cài/gỡ đi kèm bản phát hành
+packaging/            hướng dẫn đi kèm file DMG
 scripts/              build, cài, đóng gói, test trong app thật
 ```
 

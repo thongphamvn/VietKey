@@ -1,34 +1,34 @@
 import Cocoa
-import Carbon
 import InputMethodKit
 
-/// `VietKey --register`: đăng ký và bật bộ gõ với macOS rồi thoát (dùng khi cài đặt).
-/// `VietKey --unregister`: tắt bộ gõ rồi thoát (dùng khi gỡ cài đặt).
-func registerInputSource(enable: Bool) -> Int32 {
-    let url = Bundle.main.bundleURL as CFURL
-    let status = TISRegisterInputSource(url)
-    guard status == noErr else {
-        print("Không đăng ký được bộ gõ (lỗi \(status))")
-        return 1
+// Dòng lệnh (dùng cho script cài đặt):
+//   VietKey --register     đăng ký và bật bộ gõ tại vị trí của app này, rồi thoát
+//   VietKey --unregister   tắt bộ gõ rồi thoát
+//   VietKey --install      cài vào ~/Library/Input Methods không cần hỏi (giống bấm "Cài đặt")
+//   VietKey --uninstall    gỡ khỏi máy không cần hỏi
+let args = CommandLine.arguments
+if args.contains("--install") || args.contains("--uninstall") {
+    do {
+        if args.contains("--install") { try Installer.install() } else { try Installer.uninstall() }
+        print(args.contains("--install") ? "Đã cài VietKey vào \(Installer.dest.path)" : "Đã gỡ VietKey")
+        exit(0)
+    } catch {
+        print(error.localizedDescription); exit(1)
     }
-    let filter = [kTISPropertyBundleID as String: Bundle.main.bundleIdentifier ?? ""] as CFDictionary
-    let sources = (TISCreateInputSourceList(filter, true)?.takeRetainedValue() as? [TISInputSource]) ?? []
-    guard !sources.isEmpty else {
-        print("Đã đăng ký nhưng chưa thấy bộ gõ. Hãy đăng xuất rồi đăng nhập lại.")
-        return 1
+}
+if args.contains("--register") || args.contains("--unregister") {
+    let enable = args.contains("--register")
+    if let err = Installer.setEnabled(enable, appAt: Bundle.main.bundleURL) {
+        print(err); exit(1)
     }
-    for s in sources {
-        let err = enable ? TISEnableInputSource(s) : TISDisableInputSource(s)
-        if err != noErr { print("Lỗi \(err)") }
-    }
-    print(enable ? "Đã bật VietKey. Chọn VietKey trên thanh menu (biểu tượng bàn phím) để dùng."
-                 : "Đã tắt VietKey.")
-    return 0
+    print(enable ? "Đã bật VietKey. Chọn VietKey trên thanh menu (biểu tượng bàn phím) để dùng." : "Đã tắt VietKey.")
+    exit(0)
 }
 
-let args = CommandLine.arguments
-if args.contains("--register") { exit(registerInputSource(enable: true)) }
-if args.contains("--unregister") { exit(registerInputSource(enable: false)) }
+// Mở từ DMG / Applications => chạy trình cài đặt
+if !Installer.isInstalledCopy {
+    Installer.runInteractive()
+}
 
 let connectionName = Bundle.main.infoDictionary?["InputMethodConnectionName"] as? String ?? "VietKey_Connection"
 let server = IMKServer(name: connectionName, bundleIdentifier: Bundle.main.bundleIdentifier)

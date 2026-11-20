@@ -3,4 +3,4 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 scripts/build.sh   # luôn build lại để cài đúng code mới nhất
-packaging/install.command build
+build/VietKey.app/Contents/MacOS/VietKey --install

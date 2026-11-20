@@ -18,7 +18,8 @@ rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 mv build/VietKey-bin "$APP/Contents/MacOS/VietKey"
 cp Resources/Info.plist "$APP/Contents/"
-[ -f build/icon.tiff ] || swift scripts/make-icon.swift build/icon.tiff
-cp build/icon.tiff "$APP/Contents/Resources/"
+[ -f build/icon.tiff ] || swift scripts/make-icon.swift menu build/icon.tiff
+[ -f build/AppIcon.icns ] || swift scripts/make-icon.swift app build/AppIcon.icns
+cp build/icon.tiff build/AppIcon.icns "$APP/Contents/Resources/"
 codesign --force --sign - "$APP"
 echo "Đã build: $APP ($(lipo -archs "$APP/Contents/MacOS/VietKey"))"

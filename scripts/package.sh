@@ -1,19 +1,17 @@
 #!/bin/bash
-# Đóng gói bản phát hành: dist/VietKey-<version>.zip
-# (VietKey.app universal + install.command + uninstall.command + hướng dẫn)
+# Đóng gói bản phát hành: dist/VietKey-<version>.dmg (VietKey.app universal + hướng dẫn).
+# Người dùng mở DMG, bấm đúp VietKey => app tự cài vào ~/Library/Input Methods.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Resources/Info.plist)
 scripts/build.sh --universal
 NAME="VietKey-$VERSION"
 STAGE="dist/$NAME"
-rm -rf "$STAGE" "dist/$NAME.zip"
+rm -rf "$STAGE" "dist/$NAME.dmg"
 mkdir -p "$STAGE"
 cp -R build/VietKey.app "$STAGE/"
-cp packaging/install.command "$STAGE/Cài đặt VietKey.command"
-cp packaging/uninstall.command "$STAGE/Gỡ VietKey.command"
-cp packaging/HUONG-DAN.txt "$STAGE/"
-chmod +x "$STAGE"/*.command
-(cd dist && ditto -c -k --keepParent "$NAME" "$NAME.zip")
-shasum -a 256 "dist/$NAME.zip"
-echo "Đã đóng gói: dist/$NAME.zip"
+cp packaging/HUONG-DAN.txt "$STAGE/Hướng dẫn.txt"
+hdiutil create -quiet -volname "VietKey $VERSION" -srcfolder "$STAGE" -fs HFS+ -format UDZO "dist/$NAME.dmg"
+rm -rf "$STAGE"
+shasum -a 256 "dist/$NAME.dmg"
+echo "Đã đóng gói: dist/$NAME.dmg"
