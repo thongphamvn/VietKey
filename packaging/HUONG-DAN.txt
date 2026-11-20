@@ -1,0 +1,32 @@
+VIETKEY - BỘ GÕ TIẾNG VIỆT CHO MACOS
+====================================
+
+CÀI ĐẶT
+1. Bấm đúp "Cài đặt VietKey.command".
+   Nếu macOS báo không mở được vì chưa xác minh nhà phát triển:
+   mở System Settings > Privacy & Security, kéo xuống, bấm "Open Anyway",
+   rồi bấm đúp lại file đó.
+   (Hoặc mở Terminal, kéo file vào cửa sổ Terminal rồi bấm Enter.)
+2. Chọn "VietKey" ở biểu tượng bàn phím trên thanh menu,
+   hoặc đổi bộ gõ bằng Ctrl+Space / phím Fn (🌐).
+   Nếu chưa thấy VietKey: đăng xuất rồi đăng nhập lại.
+
+GÕ TELEX
+  s f r x j  = sắc huyền hỏi ngã nặng      z = xoá dấu
+  aa ee oo   = â ê ô       aw ow uw = ă ơ ư       w = ư       dd = đ
+  Gõ phím dấu hai lần để bỏ dấu và giữ chữ gốc (vd: "cass" -> "cas").
+  Dấu tự đặt đúng chỗ khi gõ tiếp hoặc xoá (hoà, khoẻ, thuý, người).
+  Từ tiếng Anh tự được trả lại khi gõ dấu cách (vd: "case", "windows").
+
+TUỲ CHỌN (bấm biểu tượng bộ gõ trên thanh menu khi đang dùng VietKey)
+  - Đặt dấu kiểu mới (hoà) hoặc kiểu cũ (hòa)
+  - Gõ w thành ư
+  - Tự khôi phục từ tiếng Anh
+  - Dùng chế độ gạch chân cho app hiện tại (nếu một app nào đó gõ bị lỗi)
+
+GỠ CÀI ĐẶT
+  Bấm đúp "Gỡ VietKey.command".
+
+LƯU Ý
+  Nếu Terminal đang bật "Secure Keyboard Entry", macOS tắt mọi bộ gõ
+  (kể cả bộ gõ của Apple) cho tới khi tắt tuỳ chọn đó hoặc thoát Terminal.
