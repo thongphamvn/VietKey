@@ -68,3 +68,7 @@ scripts/              build, cài, đóng gói, test trong app thật
 - Từ tiếng Anh tình cờ là âm tiết tiếng Việt hợp lệ vẫn bị đổi (`test` → `tét`).
 - Chưa hỗ trợ kiểu gõ VNI.
 - Terminal bật Secure Keyboard Entry thì macOS tắt mọi bộ gõ.
+
+## Giấy phép
+
+[MIT](LICENSE). Được tự do dùng, sửa và phân phối lại, kể cả cho mục đích thương mại, miễn là giữ lại thông báo bản quyền.
