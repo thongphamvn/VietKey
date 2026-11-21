@@ -30,13 +30,6 @@ if !Installer.isInstalledCopy {
     Installer.runInteractive()
 }
 
-// Chỉ cho một tiến trình bộ gõ chạy: trình cài đặt và macOS có thể cùng khởi động bộ gõ một lúc.
-// Tiến trình giữ được khoá thì chạy, tiến trình sau thoát. Khoá tự nhả khi tiến trình kết thúc.
-let lockFD = open(NSTemporaryDirectory() + "com.vietkey.inputmethod.lock", O_CREAT | O_RDWR, 0o600)
-if lockFD >= 0 && flock(lockFD, LOCK_EX | LOCK_NB) != 0 {
-    exit(0)
-}
-
 let connectionName = Bundle.main.infoDictionary?["InputMethodConnectionName"] as? String ?? "VietKey_Connection"
 let server = IMKServer(name: connectionName, bundleIdentifier: Bundle.main.bundleIdentifier)
 _ = server

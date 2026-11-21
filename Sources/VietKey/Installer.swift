@@ -65,13 +65,29 @@ enum Installer {
         if let err = setEnabled(true, appAt: dest) {
             throw NSError(domain: "VietKey", code: 1, userInfo: [NSLocalizedDescriptionKey: err])
         }
-        // Khởi động tiến trình bộ gõ
+        // Khởi động tiến trình bộ gõ. Nếu VietKey đang là bộ gõ hiện tại, macOS tự mở lại ngay khi bản cũ
+        // bị tắt; tự mở thêm lúc đó sẽ thành hai tiến trình. Vì vậy chờ macOS trước, chỉ tự mở nếu sau 3 giây
+        // vẫn chưa có tiến trình nào.
+        if waitForInstalledProcess(seconds: 3) { return }
         let cfg = NSWorkspace.OpenConfiguration()
         cfg.activates = false
         cfg.createsNewApplicationInstance = true  // trình cài đặt có cùng bundle ID, phải buộc mở tiến trình mới
         let done = DispatchSemaphore(value: 0)
         NSWorkspace.shared.openApplication(at: dest, configuration: cfg) { _, _ in done.signal() }
         _ = done.wait(timeout: .now() + 5)
+    }
+
+    /// Chờ tới khi có tiến trình bộ gõ chạy từ thư mục Input Methods.
+    private static func waitForInstalledProcess(seconds: Double) -> Bool {
+        let deadline = Date().addingTimeInterval(seconds)
+        repeat {
+            let running = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).contains {
+                $0.processIdentifier != getpid() && $0.bundleURL?.standardizedFileURL == dest.standardizedFileURL
+            }
+            if running { return true }
+            RunLoop.current.run(until: Date().addingTimeInterval(0.1))
+        } while Date() < deadline
+        return false
     }
 
     static func uninstall() throws {

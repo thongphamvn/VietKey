@@ -158,18 +158,26 @@ try! """
 """.write(to: html, atomically: true, encoding: .utf8)
 
 func fileTarget(_ name: String, _ bundleID: String, _ appName: String, _ file: String) -> Target {
-    let url = workDir.appendingPathComponent(file)
-    try? "".write(to: url, atomically: true, encoding: .utf8)
+    // Mỗi lượt chạy dùng file riêng: nếu lượt trước bị dừng giữa chừng và app còn mở file cũ,
+    // ghi đè file đó sẽ làm app hiện hộp thoại "file đã bị app khác thay đổi" và chặn phím.
+    let stem = (file as NSString).deletingPathExtension, ext = (file as NSString).pathExtension
+    let url = workDir.appendingPathComponent("\(stem)-\(getpid()).\(ext)")
     return Target(
         name: name, bundleID: bundleID,
-        open: { run("/usr/bin/open", ["-a", appName, url.path]) },
+        open: {
+            try? "".write(to: url, atomically: true, encoding: .utf8)
+            run("/usr/bin/open", ["-a", appName, url.path])
+        },
         clear: { cmd("a"); press(51) },
         read: {
             // Lưu file rồi đọc từ đĩa: chắc chắn đúng nội dung trong editor
             cmd("s"); usleep(500_000)
             return try? String(contentsOf: url, encoding: .utf8)
         },
-        cleanup: { cmd("a"); press(51); cmd("s"); usleep(300_000); cmd("w") }
+        cleanup: {
+            cmd("a"); press(51); cmd("s"); usleep(300_000); cmd("w"); usleep(500_000)
+            try? FileManager.default.removeItem(at: url)
+        }
     )
 }
 
