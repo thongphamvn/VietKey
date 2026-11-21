@@ -1,6 +1,6 @@
 # Lệnh cài bằng curl (install.sh)
-# Ngày:    2026-11-21 11:05 +07
-# Commit:  092df37
+# Ngày:    2026-11-21 11:13 +07
+# Commit:  65db64c
 # macOS:   27.2.1 (arm64)
 # Swift:   Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
 
@@ -43,7 +43,6 @@
   ✔ bản đã cài vẫn còn nguyên
 
 ▸ Cài từ DMG có sẵn (VIETKEY_DMG=dist/VietKey-0.1.0.dmg)
-    sandbox_extension_issue_file_to_process failed for /var/folders/bp/j1s2v61n4xx59qhdtzrk1rbm0000gp/T/tmp.CLltyS9LZv/mnt/VietKey.app: 1 (Operation not permitted)
     Đã cài VietKey vào ~/Library/Input Methods/VietKey.app
     
     Xong! Chọn VietKey ở biểu tượng bàn phím trên thanh menu, hoặc đổi bộ gõ bằng Ctrl+Space / phím 🌐.

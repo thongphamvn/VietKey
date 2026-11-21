@@ -1,11 +1,12 @@
 # Gõ phím thật trong app
-# Ngày:    2026-11-21 11:05 +07
-# Commit:  092df37
+# Ngày:    2026-11-21 11:13 +07
+# Commit:  65db64c
 # macOS:   27.2.1 (arm64)
 # Swift:   Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
 
 
 ▸ TextEdit
+  (khởi động lần 1: nhận "aa", chọn lại VietKey)
   (bộ gõ: com.vietkey.inputmethod.VietKey)
   ✔ tooi ddi hocj                      → "tôi đi học "
   ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
@@ -46,6 +47,7 @@
   ✔ case tests, windows.               → "case tests, windows."
 
 ▸ Chrome (thanh địa chỉ)
+  (khởi động lần 1: nhận "aa", chọn lại VietKey)
   (bộ gõ: com.vietkey.inputmethod.VietKey)
   ✔ tooi ddi hocj                      → "tôi đi học "
   ✔ Vieejt Nam laf nuwowcs             → "Việt Nam là nước "
