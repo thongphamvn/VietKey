@@ -1,12 +1,11 @@
 # Unit test: engine và app giả lập
-# Ngày:    2026-11-21 10:28 +07
-# Commit:  716d129 (có thay đổi chưa commit)
+# Ngày:    2026-11-21 11:04 +07
+# Commit:  092df37
 # macOS:   27.2.1 (arm64)
 # Swift:   Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
 
-[1 / 7]
-[2 / 8] VietEngine
-[6 / 12] VietEngine
+[2 / 7] VietEngine
+[9 / 13] VietEngine
 [12 / 16] VietTests-product
 [13 / 37]
 [20 / 37]

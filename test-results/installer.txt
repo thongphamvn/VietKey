@@ -1,6 +1,6 @@
 # Trình cài đặt trong DMG
-# Ngày:    2026-11-21 10:28 +07
-# Commit:  716d129 (có thay đổi chưa commit)
+# Ngày:    2026-11-21 11:05 +07
+# Commit:  092df37
 # macOS:   27.2.1 (arm64)
 # Swift:   Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
 
@@ -19,6 +19,7 @@ Nguồn: dist/VietKey-0.1.0.dmg
   ✔ trình cài đặt tự thoát
   ✔ app có trong Input Methods
   ✔ bộ gõ đang chạy
+  ✔ chỉ có một tiến trình bộ gõ
   ✔ bộ gõ được bật
 
 ▸ Gỡ cài đặt
@@ -49,7 +50,8 @@ Nguồn: dist/VietKey-0.1.0.dmg
   ✔ app có trong Input Methods
   ✔ không còn cờ quarantine
   ✔ bộ gõ đang chạy
+  ✔ chỉ có một tiến trình bộ gõ
   ✔ bộ gõ được bật
   ✔ binary universal (arm64 + x86_64)
 
-✔ 14/14 đúng
+✔ 16/16 đúng
