@@ -3,13 +3,22 @@ VIETKEY - BỘ GÕ TIẾNG VIỆT CHO MACOS
 
 CÀI ĐẶT
 1. Bấm đúp "VietKey" rồi chọn "Cài đặt".
-   Nếu macOS báo không mở được vì chưa xác minh nhà phát triển:
+   Nếu macOS báo "VietKey" Not Opened / chưa xác minh nhà phát triển:
    mở System Settings > Privacy & Security, kéo xuống, bấm "Open Anyway",
    rồi bấm đúp lại VietKey.
+   Hoặc bỏ qua bước này bằng cách cài qua Terminal (xem bên dưới).
 2. Chọn "VietKey" ở biểu tượng bàn phím trên thanh menu,
    hoặc đổi bộ gõ bằng Ctrl+Space / phím Fn (🌐).
    Nếu chưa thấy VietKey: đăng xuất rồi đăng nhập lại.
 3. Đẩy (eject) DMG. Không cần kéo VietKey vào Applications.
+
+CÀI QUA TERMINAL (không bị macOS chặn)
+  Mở Terminal, dán lệnh sau rồi bấm Enter:
+
+  curl -fsSL https://raw.githubusercontent.com/thongphamvn/VietKey/main/install.sh | bash
+
+  Lệnh tải bản mới nhất từ GitHub, cài và bật VietKey. Không cần mật khẩu.
+  Chạy lại lệnh này để cập nhật lên bản mới.
 
 GÕ TELEX
   s f r x j  = sắc huyền hỏi ngã nặng      z = xoá dấu
@@ -26,6 +35,9 @@ TUỲ CHỌN (bấm biểu tượng bộ gõ trên thanh menu khi đang dùng Vi
 
 CẬP NHẬT / GỠ CÀI ĐẶT
   Mở DMG, bấm đúp "VietKey", chọn "Cài lại" (cập nhật) hoặc "Gỡ cài đặt".
+  Hoặc qua Terminal:
+    Cập nhật:  curl -fsSL https://raw.githubusercontent.com/thongphamvn/VietKey/main/install.sh | bash
+    Gỡ:        curl -fsSL https://raw.githubusercontent.com/thongphamvn/VietKey/main/install.sh | bash -s -- --uninstall
 
 LƯU Ý
   Nếu Terminal đang bật "Secure Keyboard Entry", macOS tắt mọi bộ gõ
