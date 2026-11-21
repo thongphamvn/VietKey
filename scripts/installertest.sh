@@ -12,6 +12,8 @@ check() { # check <mô tả> <lệnh kiểm tra...>
     if "$@"; then echo "  ✔ $desc"; PASS=$((PASS+1)); else echo "  ✘ $desc"; FAIL=$((FAIL+1)); fi
 }
 ime_running() { pgrep -f "Input Methods/VietKey.app/Contents/MacOS/VietKey$" >/dev/null; }
+# Đúng một tiến trình bộ gõ (chờ chút để tiến trình trùng, nếu có, kịp tự thoát)
+ime_single() { sleep 2; [ "$(pgrep -f "Input Methods/VietKey.app/Contents/MacOS/VietKey$" | wc -l | tr -d ' ')" -eq 1 ]; }
 installer_running() { pgrep -f "$PATTERN" >/dev/null; }
 wait_gone() { for _ in $(seq 1 30); do installer_running || return 0; sleep 0.2; done; return 1; }
 
@@ -47,6 +49,7 @@ if [ -d "$DEST" ]; then
     run_installer "Cài lại bản $(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' Resources/Info.plist)"
     check "app có trong Input Methods" test -d "$DEST"
     check "bộ gõ đang chạy" ime_running
+    check "chỉ có một tiến trình bộ gõ" ime_single
     check "bộ gõ được bật" test "$($AX sources)" -ge 1
 fi
 
@@ -61,6 +64,7 @@ run_installer "Cài đặt"
 check "app có trong Input Methods" test -d "$DEST"
 check "không còn cờ quarantine" bash -c "! xattr '$DEST' | grep -q quarantine"
 check "bộ gõ đang chạy" ime_running
+    check "chỉ có một tiến trình bộ gõ" ime_single
 check "bộ gõ được bật" test "$($AX sources)" -ge 1
 check "binary universal (arm64 + x86_64)" bash -c "lipo -archs '$DEST/Contents/MacOS/VietKey' | grep -q x86_64 && lipo -archs '$DEST/Contents/MacOS/VietKey' | grep -q arm64"
 

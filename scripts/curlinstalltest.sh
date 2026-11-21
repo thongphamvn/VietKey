@@ -8,11 +8,14 @@ DEST="$HOME/Library/Input Methods/VietKey.app"
 PASS=0; FAIL=0
 check() { local d=$1; shift; if "$@"; then echo "  ✔ $d"; PASS=$((PASS+1)); else echo "  ✘ $d"; FAIL=$((FAIL+1)); fi; }
 ime_running() { pgrep -f "Input Methods/VietKey.app/Contents/MacOS/VietKey$" >/dev/null; }
+# Đúng một tiến trình bộ gõ (chờ chút để tiến trình trùng, nếu có, kịp tự thoát)
+ime_single() { sleep 2; [ "$(pgrep -f "Input Methods/VietKey.app/Contents/MacOS/VietKey$" | wc -l | tr -d ' ')" -eq 1 ]; }
 enabled() { swift scripts/axtool.swift sources; }
 installed_ok() {
     check "app có trong Input Methods" test -d "$DEST"
     check "không có cờ quarantine" bash -c "! xattr '$DEST' | grep -q quarantine"
     check "bộ gõ đang chạy" ime_running
+    check "chỉ có một tiến trình bộ gõ" ime_single
     check "bộ gõ được bật" test "$(enabled)" -ge 1
 }
 # Chạy install.sh qua pipe, in output (bỏ thanh tiến trình của curl)
