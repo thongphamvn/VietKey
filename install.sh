@@ -71,7 +71,8 @@ main() {
         || die "Không mở được file DMG."
     [ -x "$mnt/VietKey.app/Contents/MacOS/VietKey" ] || die "File DMG không có VietKey.app."
 
-    "$mnt/VietKey.app/Contents/MacOS/VietKey" --install
+    # Ẩn thông báo nội bộ vô hại của macOS (sandbox_extension_issue_file_to_process) khi macOS tự mở lại bộ gõ
+    "$mnt/VietKey.app/Contents/MacOS/VietKey" --install 2> >(grep -v "sandbox_extension_issue_file" >&2)
     say ""
     say "Xong! Chọn VietKey ở biểu tượng bàn phím trên thanh menu, hoặc đổi bộ gõ bằng Ctrl+Space / phím 🌐."
     say "Nếu chưa thấy VietKey trong danh sách: đăng xuất rồi đăng nhập lại."
