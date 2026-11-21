@@ -2,6 +2,7 @@
 # Chạy toàn bộ test và lưu kết quả vào test-results/:
 #   unit.txt        engine + app giả lập            (swift run VietTests)
 #   installer.txt   trình cài đặt trong DMG         (scripts/installertest.sh)
+#   curl-install.txt lệnh cài bằng curl            (scripts/curlinstalltest.sh)
 #   realtest.txt    gõ phím thật trong app thật     (scripts/realtest.swift)
 #   SUMMARY.md      tóm tắt
 # Bỏ qua phần cần Accessibility bằng: scripts/test-all.sh --unit-only
@@ -23,7 +24,8 @@ declare -a ROWS
 run() {
     local name=$1 file=$2; shift 2
     echo "▸ $name"
-    { header "$name"; "$@" 2>&1 | grep -v -E '^\[[0-9]+/[0-9]+\]|^Building|^Build complete|^Compiling|^Write|ld: warning|replacing existing signature'; } > "$OUT/$file"
+    # Ẩn thư mục home (có tên người dùng) trước khi lưu kết quả
+    { header "$name"; "$@" 2>&1 | grep -v -E '^\[[0-9]+/[0-9]+\]|^Building|^Build complete|^Compiling|^Write|ld: warning|replacing existing signature' | sed "s|$HOME|~|g"; } > "$OUT/$file"
     local summary; summary=$(grep -E '^(✔|✘) [0-9]+/[0-9]+|passed, [0-9]+ failed' "$OUT/$file" | tail -1)
     echo "  ${summary:-không có kết quả}"
     ROWS+=("| $name | ${summary:-không có kết quả} | [$file]($file) |")
@@ -33,6 +35,7 @@ run "Unit test: engine và app giả lập" unit.txt swift run VietTests
 if [ "${1:-}" != "--unit-only" ]; then
     [ -n "$(ls dist/VietKey-*.dmg 2>/dev/null)" ] || scripts/package.sh >/dev/null 2>&1
     run "Trình cài đặt trong DMG" installer.txt scripts/installertest.sh
+    run "Lệnh cài bằng curl (install.sh)" curl-install.txt scripts/curlinstalltest.sh
     run "Gõ phím thật trong app" realtest.txt swift scripts/realtest.swift
 fi
 

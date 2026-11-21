@@ -17,12 +17,23 @@ Ngoài ra:
 
 ## Cài đặt
 
-1. Tải **`VietKey-<phiên bản>.dmg`** ở mục [Releases](../../releases) rồi mở ra.
-2. Bấm đúp **VietKey** và chọn **Cài đặt**. App tự cài vào `~/Library/Input Methods` và bật bộ gõ, không cần mật khẩu quản trị và không cần kéo vào Applications.
-   App chưa được Apple công chứng, nên lần đầu macOS có thể chặn. Khi đó vào **System Settings → Privacy & Security → Open Anyway** rồi bấm đúp lại.
-3. Chọn **VietKey** ở biểu tượng bàn phím trên thanh menu (hoặc Ctrl+Space / phím 🌐). Nếu chưa thấy, đăng xuất rồi đăng nhập lại.
+**Cách nhanh nhất:** dán lệnh này vào Terminal.
 
-Cập nhật hoặc gỡ cài đặt: mở DMG, bấm đúp **VietKey**, chọn **Cài lại** hoặc **Gỡ cài đặt**.
+```bash
+curl -fsSL https://raw.githubusercontent.com/thongphamvn/VietKey/main/install.sh | bash
+```
+
+Lệnh tải bản mới nhất ở mục [Releases](../../releases), cài vào `~/Library/Input Methods` và bật bộ gõ. Không cần mật khẩu quản trị. Vì tải bằng `curl`, macOS không hiện hộp thoại *"Apple could not verify…"*. Chạy lại lệnh này để cập nhật.
+
+Sau đó chọn **VietKey** ở biểu tượng bàn phím trên thanh menu (hoặc Ctrl+Space / phím 🌐). Nếu chưa thấy, đăng xuất rồi đăng nhập lại.
+
+Gỡ cài đặt:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/thongphamvn/VietKey/main/install.sh | bash -s -- --uninstall
+```
+
+**Hoặc dùng file DMG:** tải `VietKey-<phiên bản>.dmg` ở mục Releases, mở ra, bấm đúp **VietKey** và chọn **Cài đặt**. App chưa được Apple công chứng (notarize), nên lần đầu macOS sẽ chặn. Khi đó vào **System Settings → Privacy & Security → Open Anyway** rồi bấm đúp lại. Mở lại DMG để **Cài lại** hoặc **Gỡ cài đặt**.
 
 Yêu cầu macOS 13 trở lên, Apple Silicon hoặc Intel.
 
