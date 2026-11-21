@@ -116,6 +116,19 @@ func selectVietKey() {
     RunLoop.current.run(until: Date().addingTimeInterval(0.2))
 }
 
+/// Lệnh chọn bộ gõ từ tiến trình nền không áp dụng cho ô nhập liệu đang mở sẵn trong app phía trước
+/// (app có thể nhớ bộ gõ riêng cho từng cửa sổ). Đưa app ra sau, chọn VietKey, rồi đưa app lên lại
+/// để app áp dụng bộ gõ mới, giống người dùng đổi bộ gõ rồi quay lại app.
+func reselectVietKey(in bundleID: String) {
+    func activate(_ id: String) {
+        NSRunningApplication.runningApplications(withBundleIdentifier: id).first?.activate()
+        RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    activate("com.apple.finder")
+    selectVietKey()
+    activate(bundleID)
+}
+
 // MARK: - Test
 
 struct Case { let keys: String; let expected: String }
@@ -247,7 +260,7 @@ outer: for key in selected {
         let v = t.read() ?? ""
         if t.compareSuffix ? v.hasSuffix("â") : v == "â" { ready = true; break }
         print("  (khởi động lần \(attempt): nhận \"\(v.suffix(10))\", chọn lại VietKey)")
-        selectVietKey(); usleep(500_000)
+        reselectVietKey(in: t.bundleID); usleep(500_000)
     }
     if !ready { print("  ⚠︎ VietKey không nhận phím trong \(t.name)") }
     print("  (bộ gõ: \(currentSourceID()))")

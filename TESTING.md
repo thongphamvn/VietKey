@@ -40,7 +40,7 @@ scripts/test-all.sh --unit-only  # chỉ unit test, không cần quyền gì
 
 ## Ghi chú
 
-- Ngay sau khi bộ gõ được cài lại hoặc khởi động lại, vài phím đầu trong app đang mở có thể chưa đi qua bộ gõ. Vì vậy test gõ thật có bước "khởi động": gõ `aa` tới khi ra `â` rồi mới tính điểm, và ghi lại số lần thử vào kết quả.
+- Script test chọn bộ gõ bằng `TISSelectInputSource` từ tiến trình nền. Lệnh này đôi khi không áp dụng cho ô nhập liệu đang mở sẵn trong app phía trước (app nhớ bộ gõ riêng cho từng cửa sổ). Khi đó log debug cho thấy VietKey không nhận phím nào. Vì vậy test có bước "khởi động": gõ `aa` tới khi ra `â`; nếu chưa ra thì đưa app ra sau, chọn VietKey, đưa app lên lại, giống người dùng đổi bộ gõ rồi quay lại app. Số lần thử được ghi vào kết quả. Người dùng thật đổi bộ gõ ngay trong app nên không gặp chuyện này.
 - Khi thử bỏ `LSBackgroundOnly` khỏi Info.plist, đôi khi cả lượt test trong một app không nhận bộ gõ (thấy ở Chrome, Safari). Vì vậy tiến trình bộ gõ giữ `LSBackgroundOnly`. Hộp thoại cài đặt vẫn hiện bình thường.
 - Khi cài lại lúc VietKey đang là bộ gõ hiện tại, macOS tự mở lại tiến trình bộ gõ ngay khi bản cũ bị tắt. Trình cài đặt chờ macOS trước rồi mới tự mở, để không thành hai tiến trình. Thử dùng khoá file cho tiến trình thứ hai tự thoát thì app bị mất phím (TextEdit không nhận chữ nào), nên đã bỏ cách đó. Test cài đặt kiểm tra "chỉ có một tiến trình bộ gõ".
 - Test gõ thật dùng file riêng cho mỗi lượt chạy. Nếu dùng chung một file mà lượt trước bị dừng giữa chừng, TextEdit sẽ hiện hộp thoại "file đã bị app khác thay đổi" và chặn phím.
