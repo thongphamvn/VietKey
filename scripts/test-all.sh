@@ -14,7 +14,7 @@ mkdir -p "$OUT"
 header() {
     echo "# $1"
     echo "# Ngày:    $(date '+%Y-%m-%d %H:%M %Z')"
-    echo "# Commit:  $(git rev-parse --short HEAD 2>/dev/null || echo '?')$(git diff --quiet HEAD 2>/dev/null || echo ' (có thay đổi chưa commit)')"
+    echo "# Commit:  $(git rev-parse --short HEAD 2>/dev/null || echo '?')$(git diff --quiet HEAD -- . ':!test-results' 2>/dev/null || echo ' (có thay đổi chưa commit)')"
     echo "# macOS:   $(sw_vers -productVersion) ($(uname -m))"
     echo "# Swift:   $(swift --version 2>/dev/null | head -1)"
     echo
