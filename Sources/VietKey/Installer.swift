@@ -69,12 +69,14 @@ enum Installer {
         // bị tắt; tự mở thêm lúc đó sẽ thành hai tiến trình. Vì vậy chờ macOS trước, chỉ tự mở nếu sau 3 giây
         // vẫn chưa có tiến trình nào.
         if waitForInstalledProcess(seconds: 3) { return }
-        let cfg = NSWorkspace.OpenConfiguration()
-        cfg.activates = false
-        cfg.createsNewApplicationInstance = true  // trình cài đặt có cùng bundle ID, phải buộc mở tiến trình mới
-        let done = DispatchSemaphore(value: 0)
-        NSWorkspace.shared.openApplication(at: dest, configuration: cfg) { _, _ in done.signal() }
-        _ = done.wait(timeout: .now() + 5)
+        // Dùng /usr/bin/open: -n buộc mở tiến trình mới (trình cài đặt có cùng bundle ID), -g mở ở nền.
+        // (NSWorkspace.openApplication in cảnh báo sandbox_extension vô hại ra stderr khi chạy từ DMG.)
+        let open = Process()
+        open.executableURL = URL(fileURLWithPath: "/usr/bin/open")
+        open.arguments = ["-g", "-n", dest.path]
+        try? open.run()
+        open.waitUntilExit()
+        _ = waitForInstalledProcess(seconds: 5)
     }
 
     /// Chờ tới khi có tiến trình bộ gõ chạy từ thư mục Input Methods.
